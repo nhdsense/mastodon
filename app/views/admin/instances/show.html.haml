@@ -1,0 +1,33 @@
+- content_for :page_title do
+  = @instance.domain
+
+.dashboard__counters
+  %div
+    %div
+      .dashboard__counters__num= number_with_delimiter @following_count
+      .dashboard__counters__label= t 'admin.instances.total_followed_by_them'
+  %div
+    %div
+      .dashboard__counters__num= number_with_delimiter @followers_count
+      .dashboard__counters__label= t 'admin.instances.total_followed_by_us'
+  %div
+    %div
+      .dashboard__counters__num= number_to_human_size @media_storage
+      .dashboard__counters__label= t 'admin.instances.total_storage'
+  %div
+    %div
+      .dashboard__counters__num= number_with_delimiter @blocks_count
+      .dashboard__counters__label= t 'admin.instances.total_blocked_by_us'
+  %div
+    %div
+      .dashboard__counters__num= number_with_delimiter @reports_count
+      .dashboard__counters__label= t 'admin.instances.total_reported'
+  %div
+    %div
+      .dashboard__counters__num
+        - if @available
+          = fa_icon 'check'
+        - else
+          = fa_icon 'times'
+      .dashboard__counters__label= t 'admin.instances.delivery_available'
+

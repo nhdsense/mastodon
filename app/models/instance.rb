@@ -9,4 +9,8 @@ class Instance
     @domain = account.domain
     @accounts_count = account.accounts_count
   end
+
+  def to_param
+    domain
+  end
 end

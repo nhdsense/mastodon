@@ -157,11 +157,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :instances, only: [:index] do
-      collection do
-        post :resubscribe
-      end
-    end
+    resources :instances, only: [:index, :show], constraints: { id: /[^\/]+/ }
 
     resources :reports, only: [:index, :show] do
       member do
